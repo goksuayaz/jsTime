@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Saat ve Karşılama</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+    <style>
+    
+body {
+    background: #24c1ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.greeting {
+    font-size: 70px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-decoration: double;
+    color: darkblue;
+    margin-bottom: 20px;
+}
+.clock {
+    font-size: 80px;
+    color: #ff0000;
+    text-decoration: underline;
+}
+.description {
+    font-size: 20px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color:darkblue;
+    text-align: center;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <div class="text-center">
+        
+        <div class="greeting">
+            Selam, <strong><span id="myName">Ziyaretçi</span></strong>! Hoşgeldinnn!
+        </div>
+        <div id="myClock" class="clock"></div>
+        <div class="description">
+            tarihinde <strong>Patika.dev</strong>'nin JavaScript saat ödevi sayfasındasınız. Hadi biraz eğlenelim!
+            <img src="https://1000logos.net/wp-content/uploads/2024/01/Red-Heart-Emojis.png" alt="Hoşgeldiniz">
+        </div>
+    </div>    
+    <script>
+        function showTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('myClock').textContent = timeString;
+        }
+
+        function setGreeting() {
+            const name = prompt('Lütfen adınızı giriniz:');
+            if (name) {
+                document.getElementById('myName').textContent = name;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setGreeting();
+            showTime();
+            setInterval(showTime, 1000);
+        });
+
+    </script>
+    
+</body>
+</html>
